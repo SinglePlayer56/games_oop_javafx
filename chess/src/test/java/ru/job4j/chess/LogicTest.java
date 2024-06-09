@@ -24,7 +24,7 @@ public class LogicTest {
 
     @Test
     public void whenNotFreeCellThenOccupiedCellException() {
-        assertThrows(
+        OccupiedCellException exception = assertThrows(
                 OccupiedCellException.class,
                 () -> {
                     Logic logic = new Logic();
@@ -33,5 +33,6 @@ public class LogicTest {
                     logic.move(Cell.E5, Cell.B2);
                 }
         );
+        assertThat(exception.getMessage()).isEqualTo("Cell is occupied");
     }
 }
